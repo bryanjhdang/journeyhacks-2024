@@ -1,48 +1,52 @@
 
-// import { useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 function App() {
-  // const [colour, setColour] = useState('');
+  const [isTurnedOn, setIsTurnedOn] = useState(false);
 
-  // const onclick = async () => {
-  //   let [tab] = await chrome.tabs.query({ active: true });
-  //   chrome.scripting.executeScript<string[], void>({
-  //     target: { tabId: tab.id! },
-  //     args: [colour],
-  //     func: (colour) => {
-  //       // alert('Hello from my extension!');
-  //       document.body.style.backgroundColor = colour;
-  //     }
-  //   });
-  // }
+  const turnOnButtonClick = () => {
+    setIsTurnedOn(!isTurnedOn);
+    // Add logic to handle the "Turn On" button click
+  };
 
-  const optionsClick = async () => {
+  const optionsClick = () => {
     console.log("clicked on options");
+    // Add logic here to handle the "Options" button click
   }
 
   return (
     <>
-      <Typography variant="h1" component="h2">Duck Blocker</Typography>
+      <Typography variant='h4'>Duck Blocker</Typography>
       <div className="card">
-        {/* <input type='color' onChange={(e) => setColour(e.currentTarget.value)}/> */}
-
         <Stack spacing={2} direction="column">
-          <Button variant="contained">
-            Turn On
+          <Button
+            variant="contained"
+            style={{ 
+              backgroundColor: isTurnedOn ? '#F63550' : '#2eb071',
+              borderRadius: '10px'
+            }}
+            onClick={turnOnButtonClick}
+          >
+            {isTurnedOn ? 'Turn Off' : 'Turn On'}
           </Button>
-          <Button variant="contained" onClick={() => optionsClick()}>
+          <Button 
+            variant="contained"
+            style={{ 
+              backgroundColor: '#3491f2',
+              borderRadius: '10px'
+            }} 
+            onClick={optionsClick}
+          >
             Options
           </Button>
         </Stack>
       </div>
 
-      <Typography>
-        Please rate us!
-      </Typography>
+      <Typography>Please rate us!</Typography>
     </>
   )
 }
