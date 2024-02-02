@@ -1,22 +1,13 @@
 
-import { useState } from 'react'
+// import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [colour, setColour] = useState('');
-
-  const onclick = async () => {
-    let [tab] = await chrome.tabs.query({ active: true });
-    chrome.scripting.executeScript<string[], void>({
-      target: { tabId: tab.id! },
-      args: [colour],
-      func: (colour) => {
-        // alert('Hello from my extension!');
-        document.body.style.backgroundColor = colour;
-      }
-    });
+  // function callback for executing Content context scripts
+  const navigateOptions = async () => {
+    chrome.tabs.create({ url: "./options.html" });
   }
 
   return (
@@ -31,9 +22,8 @@ function App() {
       </div>
       <h1>My Extension</h1>
       <div className="card">
-        <input type='color' onChange={(e) => setColour(e.currentTarget.value)}/>
-        <button onClick={() => onclick()}>
-          click me
+        <button onClick={() => navigateOptions()}>
+          Options
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
