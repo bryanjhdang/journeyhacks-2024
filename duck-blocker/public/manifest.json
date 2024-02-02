@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "version": "1.0.0",
+    "name": "Duck Blocker",
+    "description": "A duck that follows your online journey to keep you accountable.",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": [
+        "scripting"
+    ],
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*"
+    ],
+    "icons": {
+        "32": "icon32.png"
+    }
+}
