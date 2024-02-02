@@ -1,6 +1,8 @@
 
 import { useState } from 'react'
 import './App.css'
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 function App() {
   const [colour, setColour] = useState('');
@@ -25,7 +27,11 @@ function App() {
         <button onClick={() => onclick()}>
           click me
         </button>
-        
+
+        <Stack spacing={2} direction="column">
+          <Button variant="contained">Turn On</Button>
+          <Button variant="contained">Options</Button>
+        </Stack>
       </div>
       <p>
         Please rate us!
