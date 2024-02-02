@@ -3,6 +3,7 @@
 import './App.css'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function App() {
   // const [colour, setColour] = useState('');
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <>
-      <h1>Duck Blocker</h1>
+      <Typography variant="h1" component="h2">Duck Blocker</Typography>
       <div className="card">
         {/* <input type='color' onChange={(e) => setColour(e.currentTarget.value)}/> */}
 
@@ -38,9 +39,10 @@ function App() {
           </Button>
         </Stack>
       </div>
-      <p>
+
+      <Typography>
         Please rate us!
-      </p>
+      </Typography>
     </>
   )
 }
