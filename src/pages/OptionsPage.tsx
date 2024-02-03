@@ -23,14 +23,16 @@ export function OptionsPage() {
   const [websiteList, setWebsiteList] = useState<WebsiteItem[]>([]);
 
   useEffect(() => {
-    // Load data from local storage on component mount
-    const storedWebsites = JSON.parse(localStorage.getItem('websiteList') || '[]');
-    setWebsiteList(storedWebsites);
+    // Load data from Chrome storage on component mount
+    chrome.storage.sync.get('websiteList', (data) => {
+      const storedWebsites = data.websiteList || [];
+      setWebsiteList(storedWebsites);
+    });
   }, []);
 
-  const updateLocalStorage = (newWebsiteList: WebsiteItem[]) => {
-    // Update local storage whenever the websiteList changes
-    localStorage.setItem('websiteList', JSON.stringify(newWebsiteList));
+  const updateChromeStorage = (newWebsiteList: WebsiteItem[]) => {
+    // Update Chrome storage whenever the websiteList changes
+    chrome.storage.sync.set({ websiteList: newWebsiteList });
   };
 
   const handleAddWebsite = () => {
@@ -39,7 +41,7 @@ export function OptionsPage() {
       const newWebsiteList = [...websiteList, newWebsiteItem];
 
       setWebsiteList(newWebsiteList);
-      updateLocalStorage(newWebsiteList);
+      updateChromeStorage(newWebsiteList);
 
       setWebsiteInput('');
     }
@@ -49,7 +51,7 @@ export function OptionsPage() {
     const newWebsiteList = websiteList.filter((item) => item.id !== id);
 
     setWebsiteList(newWebsiteList);
-    updateLocalStorage(newWebsiteList);
+    updateChromeStorage(newWebsiteList);
   };
 
   return (
@@ -99,7 +101,6 @@ export function OptionsPage() {
               <TableCell>
                 <IconButton 
                   aria-label="delete" 
-                  // color="black"
                   style={{color: 'black'}} 
                   onClick={() => handleDeleteWebsite(item.id)}
                 >
