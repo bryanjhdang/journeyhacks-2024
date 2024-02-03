@@ -15,7 +15,7 @@
         "https://*/*"
     ],
     "icons": {
-        "32": "icon32.png"
+        "32": "duck_logo.png"
     },
     "background": {
         "service_worker": "sw.js",

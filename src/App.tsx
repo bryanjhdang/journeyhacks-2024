@@ -14,7 +14,6 @@ function App() {
   };
 
   const optionsClick = () => {
-    console.log("clicked on options");
     chrome.tabs.create({ url: "./src/pages/options.html" });
   }
 
@@ -47,8 +46,6 @@ function App() {
           </Button>
         </Stack>
       </div>
-
-      <Typography>Please rate us!</Typography>
     </>
   )
 }
