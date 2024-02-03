@@ -1,17 +1,17 @@
 
-import { useState } from 'react'
+// import { useState } from 'react'
 import './App.css'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 function App() {
-  const [isTurnedOn, setIsTurnedOn] = useState(false);
+  // const [isTurnedOn, setIsTurnedOn] = useState(false);
 
-  const turnOnButtonClick = () => {
-    setIsTurnedOn(!isTurnedOn);
-    // Add logic to handle the "Turn On" button click
-  };
+  // const turnOnButtonClick = () => {
+  //   setIsTurnedOn(!isTurnedOn);
+  //   // Add logic to handle the "Turn On" button click
+  // };
 
   const optionsClick = () => {
     chrome.tabs.create({ url: "./src/pages/options.html" });
@@ -22,7 +22,7 @@ function App() {
       <Typography variant='h4'>Duck Blocker</Typography>
       <div className="card">
         <Stack spacing={2} direction="column">
-          <Button
+          {/* <Button
             variant="contained"
             style={{ 
               backgroundColor: isTurnedOn ? '#F63550' : '#2eb071',
@@ -32,7 +32,7 @@ function App() {
             onClick={turnOnButtonClick}
           >
             {isTurnedOn ? 'Turn Off' : 'Turn On'}
-          </Button>
+          </Button> */}
           <Button 
             variant="contained"
             style={{ 

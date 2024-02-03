@@ -24,7 +24,7 @@ export function OptionsPage() {
 
   useEffect(() => {
     // Load data from Chrome storage on component mount
-    chrome.storage.sync.get('websiteList', (data) => {
+    chrome.storage.local.get('websiteList', (data) => {
       const storedWebsites = data.websiteList || [];
       setWebsiteList(storedWebsites);
     });
@@ -32,7 +32,7 @@ export function OptionsPage() {
 
   const updateChromeStorage = (newWebsiteList: WebsiteItem[]) => {
     // Update Chrome storage whenever the websiteList changes
-    chrome.storage.sync.set({ websiteList: newWebsiteList });
+    chrome.storage.local.set({ websiteList: newWebsiteList });
   };
 
   const handleAddWebsite = () => {
