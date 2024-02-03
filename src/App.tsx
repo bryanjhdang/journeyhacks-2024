@@ -1,6 +1,5 @@
-
-import { useState } from 'react'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -8,14 +7,24 @@ import Typography from '@mui/material/Typography';
 function App() {
   const [isTurnedOn, setIsTurnedOn] = useState(false);
 
+  // Load the initial state from chrome.storage
+  useEffect(() => {
+    chrome.storage.sync.get('isTurnedOn', (data) => {
+      setIsTurnedOn(!!data.isTurnedOn); // Convert undefined to false
+    });
+  }, []);
+
   const turnOnButtonClick = () => {
-    setIsTurnedOn(!isTurnedOn);
-    // Add logic to handle the "Turn On" button click
+    const newIsTurnedOn = !isTurnedOn;
+    setIsTurnedOn(newIsTurnedOn);
+
+    // Save the state to chrome.storage
+    chrome.storage.sync.set({ isTurnedOn: newIsTurnedOn });
   };
 
   const optionsClick = () => {
     chrome.tabs.create({ url: "./src/pages/options.html" });
-  }
+  };
 
   return (
     <>
@@ -46,10 +55,8 @@ function App() {
           </Button>
         </Stack>
       </div>
-
-      <Typography>Please rate us!</Typography>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
