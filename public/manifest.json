@@ -7,7 +7,8 @@
         "default_popup": "index.html"
     },
     "permissions": [
-        "scripting"
+        "scripting",
+        "storage"
     ],
     "host_permissions": [
         "http://*/*",
@@ -15,5 +16,9 @@
     ],
     "icons": {
         "32": "icon32.png"
+    },
+    "background": {
+        "service_worker": "sw.js",
+        "type": "module"
     }
 }
