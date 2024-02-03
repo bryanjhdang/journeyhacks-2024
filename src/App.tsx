@@ -15,7 +15,7 @@ function App() {
 
   const optionsClick = () => {
     console.log("clicked on options");
-    // Add logic here to handle the "Options" button click
+    chrome.tabs.create({ url: "./src/pages/options/options.html" });
   }
 
   return (
