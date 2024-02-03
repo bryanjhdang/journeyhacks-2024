@@ -7,7 +7,7 @@ import './App.css'
 function App() {
   // function callback for executing Content context scripts
   const navigateOptions = async () => {
-    chrome.tabs.create({ url: "./options.html" });
+    chrome.tabs.create({ url: "./src/pages/options/options.html" });
   }
 
   return (
