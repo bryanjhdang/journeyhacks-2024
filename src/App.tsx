@@ -27,7 +27,8 @@ function App() {
             variant="contained"
             style={{ 
               backgroundColor: isTurnedOn ? '#F63550' : '#2eb071',
-              borderRadius: '10px'
+              borderRadius: '10px',
+              width: '200px'
             }}
             onClick={turnOnButtonClick}
           >
@@ -37,7 +38,8 @@ function App() {
             variant="contained"
             style={{ 
               backgroundColor: '#3491f2',
-              borderRadius: '10px'
+              borderRadius: '10px',
+              width: '200px'
             }} 
             onClick={optionsClick}
           >
