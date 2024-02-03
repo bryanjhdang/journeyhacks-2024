@@ -16,5 +16,9 @@
     ],
     "icons": {
         "32": "duck_logo.png"
+    },
+    "background": {
+        "service_worker": "sw.js",
+        "type": "module"
     }
 }
