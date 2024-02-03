@@ -17,7 +17,30 @@ function App() {
         document.body.style.backgroundColor = colour;
       }
     });
-  }
+  };
+
+  let duckPopupWindow: chrome.windows.Window | null = null;
+
+  const toggle = async () => {
+    if (!duckPopupWindow) {
+      duckPopupWindow = await chrome.windows.create({
+        url: 'duck-popup.html',
+        type: 'popup',
+        width: 400,
+        height: 400,
+        top: 100,
+        left: 100,
+      });
+
+      // Periodically update the window to stay always on top
+      setInterval(() => {
+        chrome.windows.update(duckPopupWindow!.id!, { alwaysOnTop: true } as any);
+      }, 1000); // Update every second (adjust as needed)
+    } else {
+      // If the window is already open, focus on it
+      chrome.windows.update(duckPopupWindow.id!, { focused: true, drawAttention: true  });
+    }
+  };
 
   return (
     <>
@@ -29,7 +52,7 @@ function App() {
         </button>
 
         <Stack spacing={2} direction="column">
-          <Button variant="contained">Turn On</Button>
+          <Button variant="contained" onClick={() => toggle()}>Turn On</Button>
           <Button variant="contained">Options</Button>
         </Stack>
       </div>
